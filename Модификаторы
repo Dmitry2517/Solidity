@@ -1,0 +1,32 @@
+// SPDX-Licence-Identifier: MIT
+
+pragma solidity ^0.8.0;
+
+contract Demo3 {
+
+    // require
+    // revert
+    // assert
+
+    address owner;
+
+    event Paid(address _from, uint _amount, uint _timestamp);
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    function pay() external payable{
+        emit Paid(msg.sender, msg.value, block.timestamp);
+
+    }
+    modifier onlyOwner(){
+        require(msg.sender == owner, "you are not an owner!!!");
+        _;
+    }
+
+    function withdraw(address payable _to) external onlyOwner{
+        require(msg.sender == owner, "you are not an owner!!!");
+        _to.transfer(address(this).balance);
+    }
+}
