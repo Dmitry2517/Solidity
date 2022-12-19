@@ -2,7 +2,7 @@ pragma solidity ^0.4.19;
 
 import "./ownable.sol";
 
-contract ZombieFactory is Ownable{
+contract ZombieFactory is Ownable {
 
     event NewZombie(uint zombieId, string name, uint dna);
 
@@ -12,6 +12,7 @@ contract ZombieFactory is Ownable{
     struct Zombie {
         string name;
         uint dna;
+        // Здесь добавь новые данные
     }
 
     Zombie[] public zombies;
@@ -39,4 +40,3 @@ contract ZombieFactory is Ownable{
     }
 
 }
-
